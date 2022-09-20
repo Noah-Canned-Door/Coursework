@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Car.tscn" type="PackedScene" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10, 303 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 10, 513 )
+
+[node name="World" type="Node2D"]
+
+[node name="Constraints" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Constraints"]
+position = Vector2( 0, 293 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Constraints"]
+position = Vector2( 1022, 302 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Constraints"]
+position = Vector2( 513, 5 )
+rotation = 1.5708
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Constraints"]
+position = Vector2( 506, 593 )
+rotation = 1.5708
+shape = SubResource( 2 )
+
+[node name="KinematicBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 499, 283 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
