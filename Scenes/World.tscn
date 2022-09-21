@@ -1,51 +1,41 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Car.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assests/Sprites/Test_track.jpg" type="Texture" id=2]
 [ext_resource path="res://Scenes/Checkpoint.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/Finish_line.gd" type="Script" id=4]
 
-[sub_resource type="CapsuleShape2D" id=2]
-radius = 107.138
-height = 418.124
-
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 82.2805, 24.4781 )
+extents = Vector2( 143.419, 24.4781 )
 
 [node name="World" type="Node2D"]
 scale = Vector2( 1.0009, 0.875056 )
 
 [node name="KinematicBody2D" parent="." instance=ExtResource( 1 )]
-position = Vector2( 525.529, 550.822 )
+position = Vector2( 523.529, 550.822 )
 scale = Vector2( 0.739343, 0.739343 )
 z_index = 100
 
 [node name="Camera2D" type="Camera2D" parent="KinematicBody2D"]
-scale = Vector2( -11.4388, 2.59227 )
 current = true
 zoom = Vector2( 0.5, 0.5 )
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="KinematicBody2D"]
-position = Vector2( -16.761, -285.319 )
-rotation = 1.5708
-scale = Vector2( 1.35255, 1.35255 )
-shape = SubResource( 2 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -123.0
-margin_top = -72.0
-margin_right = 769.0
-margin_bottom = 456.0
+margin_left = -635.428
+margin_top = -562.25
+margin_right = 852.572
+margin_bottom = 387.75
 rect_scale = Vector2( 1.42867, 1.58232 )
 texture = ExtResource( 2 )
 expand = true
 stretch_mode = 1
 
 [node name="Finish_line" type="CollisionShape2D" parent="."]
-position = Vector2( 647.92, 549.679 )
+position = Vector2( 647.92, 549.108 )
 rotation = 1.5708
+scale = Vector2( 1, 1 )
 shape = SubResource( 1 )
 script = ExtResource( 4 )
 
