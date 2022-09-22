@@ -4,8 +4,8 @@ export(int) var braking = -450
 export(int) var max_speed_reverse = 250
 
 export(int) var slip_speed = 400  # Speed where traction is reduced
-export(int) var traction_fast = 0.1  # High-speed traction
-export(int) var traction_slow = 0.7  # Low-speed traction
+export(float) var traction_fast = 0.1  # High-speed traction
+export(float) var traction_slow = 0.7  # Low-speed traction
 
 export(int) var engine_power = 800
 

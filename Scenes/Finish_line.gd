@@ -1,5 +1,6 @@
 extends Area2D
 var laps = 0
+onready var Score_label = get_tree().get_nodes_in_group("Score_label")[0]
 
 
 func _on_Area2D_body_entered(body):
@@ -9,4 +10,4 @@ func _on_Area2D_body_entered(body):
 		x.checked = false
 	if !checked_Array.has(false):
 		laps += 1
-		print("laps:"+ str(laps))
+		Score_label.text = "LAPS: "+str(laps)
