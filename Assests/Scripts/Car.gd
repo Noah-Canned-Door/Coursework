@@ -35,6 +35,8 @@ func get_input():
 		accel = transform.x * engine_power
 	if Input.is_action_pressed("brake"):
 		accel = transform.x * braking
+	if Input.is_action_pressed("quick_restart"):
+		get_tree().reload_current_scene()
 
 
 func calculate_steering(delta):

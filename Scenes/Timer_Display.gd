@@ -11,9 +11,11 @@ func _process(delta):
 	if s > 59:
 		s = 0
 		m +=1
-	set_text(str(m)+":"+ str("%02d" %s)+":"+str(ms))
-	pass	
+	set_text(format_time())
 
 
 func _on_Timer_timeout():
 	ms += 1
+
+func format_time():
+	return str(m)+":"+ str("%02d" %s)+":"+str(ms)

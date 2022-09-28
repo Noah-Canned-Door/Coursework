@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Assests/Sprites/cantor-car_tm.png" type="Texture" id=1]
 [ext_resource path="res://Assests/Scripts/Car.gd" type="Script" id=2]
@@ -28,6 +28,16 @@ font_data = ExtResource( 3 )
 size = 200
 outline_size = 30
 outline_color = Color( 0.0313726, 0.0313726, 0.0313726, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="InputEventAction" id=6]
+action = "ui_accept"
+
+[sub_resource type="ShortCut" id=7]
+shortcut = SubResource( 6 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 50
 font_data = ExtResource( 3 )
 
 [node name="Car" type="KinematicBody2D"]
@@ -61,7 +71,7 @@ margin_bottom = 14.0
 custom_fonts/font = SubResource( 2 )
 text = "LAPS: 0 "
 
-[node name="Timer_Display" type="RichTextLabel" parent="CanvasLayer/Control/Score_label"]
+[node name="Timer_Display" type="RichTextLabel" parent="CanvasLayer/Control/Score_label" groups=["timer_display"]]
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = 320.0
@@ -112,8 +122,18 @@ margin_left = 938.0
 margin_top = 507.0
 margin_right = 1013.71
 margin_bottom = 583.2
+shortcut = SubResource( 7 )
 text = "HOME"
 script = ExtResource( 4 )
+
+[node name="End_timer" type="Label" parent="CanvasLayer/Win_Screen" groups=["End_timer"]]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -66.0
+margin_right = 139.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 8 )
+text = "0:00:00"
 
 [connection signal="timeout" from="CanvasLayer/Control/Score_label/Timer_Display/Timer" to="CanvasLayer/Control/Score_label/Timer_Display" method="_on_Timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/Win_Screen/Home_Screen" to="CanvasLayer/Win_Screen/Home_Screen" method="_on_Home_Screen_pressed"]
