@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Assests/Sprites/cantor-car_tm.png" type="Texture" id=1]
 [ext_resource path="res://Assests/Scripts/Car.gd" type="Script" id=2]
 [ext_resource path="res://Assests/Fonts/RacingSansOne-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Scenes/Home_Screen.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/Timer.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/Timer_Display.gd" type="Script" id=6]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 34.9999
@@ -11,6 +14,12 @@ height = 54.0001
 [sub_resource type="DynamicFont" id=2]
 size = 50
 outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 200
+outline_size = 30
+outline_color = Color( 0.0313726, 0.0313726, 0.0313726, 1 )
 font_data = ExtResource( 3 )
 
 [node name="Car" type="KinematicBody2D"]
@@ -29,7 +38,6 @@ rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-rotating = true
 current = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -44,3 +52,42 @@ margin_right = 40.0
 margin_bottom = 14.0
 custom_fonts/font = SubResource( 2 )
 text = "LAPS: 0"
+
+[node name="Timer_Display" type="RichTextLabel" parent="CanvasLayer/Control/Score_label"]
+margin_left = 185.0
+margin_top = 11.0
+margin_right = 470.0
+margin_bottom = 66.0
+script = ExtResource( 6 )
+
+[node name="Timer" type="Timer" parent="CanvasLayer/Control/Score_label/Timer_Display"]
+autostart = true
+script = ExtResource( 5 )
+
+[node name="Win_Screen" type="ColorRect" parent="CanvasLayer" groups=["win_screen"]]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Win_Screen"]
+margin_left = 118.0
+margin_top = -19.0
+margin_right = 1143.0
+margin_bottom = 490.0
+custom_colors/font_color = Color( 0, 1, 0.180392, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "YOU'RE 
+WINNER"
+
+[node name="Home_Screen" type="Button" parent="CanvasLayer/Win_Screen"]
+anchor_right = 0.012
+anchor_bottom = 0.033
+margin_left = 938.0
+margin_top = 507.0
+margin_right = 1013.71
+margin_bottom = 583.2
+text = "HOME"
+script = ExtResource( 4 )
+
+[connection signal="pressed" from="CanvasLayer/Win_Screen/Home_Screen" to="CanvasLayer/Win_Screen/Home_Screen" method="_on_Home_Screen_pressed"]

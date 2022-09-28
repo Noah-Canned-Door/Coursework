@@ -24,7 +24,7 @@ __meta__ = {
 }
 
 [node name="Car" parent="." instance=ExtResource( 1 )]
-position = Vector2( 490.558, 547.394 )
+position = Vector2( 509.541, 564.535 )
 
 [node name="checkpoint" parent="." instance=ExtResource( 3 )]
 position = Vector2( 496.057, -164.436 )
