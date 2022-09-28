@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assests/Sprites/cantor-car_tm.png" type="Texture" id=1]
 [ext_resource path="res://Assests/Scripts/Car.gd" type="Script" id=2]
@@ -14,6 +14,14 @@ height = 54.0001
 [sub_resource type="DynamicFont" id=2]
 size = 50
 outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 50
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 50
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=3]
@@ -51,18 +59,35 @@ self_modulate = Color( 0, 0, 0, 1 )
 margin_right = 40.0
 margin_bottom = 14.0
 custom_fonts/font = SubResource( 2 )
-text = "LAPS: 0"
+text = "LAPS: 0 "
 
 [node name="Timer_Display" type="RichTextLabel" parent="CanvasLayer/Control/Score_label"]
-margin_left = 185.0
-margin_top = 11.0
-margin_right = 470.0
-margin_bottom = 66.0
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 320.0
+margin_right = 605.0
+margin_bottom = 78.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_colors/selection_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_selected = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 4 )
 script = ExtResource( 6 )
 
 [node name="Timer" type="Timer" parent="CanvasLayer/Control/Score_label/Timer_Display"]
+wait_time = 0.01
 autostart = true
 script = ExtResource( 5 )
+
+[node name="Timer_label" type="Label" parent="CanvasLayer/Control"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 229.0
+margin_right = 390.0
+margin_bottom = 67.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "Time:"
 
 [node name="Win_Screen" type="ColorRect" parent="CanvasLayer" groups=["win_screen"]]
 visible = false
@@ -90,4 +115,5 @@ margin_bottom = 583.2
 text = "HOME"
 script = ExtResource( 4 )
 
+[connection signal="timeout" from="CanvasLayer/Control/Score_label/Timer_Display/Timer" to="CanvasLayer/Control/Score_label/Timer_Display" method="_on_Timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/Win_Screen/Home_Screen" to="CanvasLayer/Win_Screen/Home_Screen" method="_on_Home_Screen_pressed"]
