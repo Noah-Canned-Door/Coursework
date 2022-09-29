@@ -56,6 +56,7 @@ rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
+rotating = true
 current = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

@@ -31,6 +31,16 @@ position = Vector2( 496.057, -164.436 )
 rotation = 1.5708
 scale = Vector2( 20, 1 )
 
+[node name="checkpoint5" parent="." instance=ExtResource( 3 )]
+position = Vector2( 163.335, 552.939 )
+rotation = 1.5708
+scale = Vector2( 20, 1 )
+
+[node name="checkpoint4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 58.9382, -162.543 )
+rotation = 1.5708
+scale = Vector2( 20, 1 )
+
 [node name="checkpoint2" parent="." instance=ExtResource( 3 )]
 position = Vector2( -194.234, 203.744 )
 scale = Vector2( 20, 1 )
@@ -49,7 +59,7 @@ scale = Vector2( 20, 1 )
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
 position = Vector2( 876.249, 6.13829 )
 rotation = 1.57079
-polygon = PoolVector2Array( -351.26, 497.589, -347.687, 83.4232, -340.693, 35.4263, -323.709, -14.8562, -300.729, -69.7098, -283.745, -102.851, -243.781, -170.275, -191.827, -233.128, -184.834, -239.985, -147.867, -270.84, -99.9101, -299.409, -77.9299, -309.694, -33.9694, -326.836, -5.99461, -335.978, 25.9766, -340.55, 54.9505, -340.55, 87.9209, -340.55, 235.788, -345.121, 393.646, -343.978, 398.641, -789.664, -825.257, -802.234, -875.798, 488.596 )
+polygon = PoolVector2Array( -351.26, 497.589, -347.687, 83.4232, -340.693, 35.4263, -323.709, -14.8562, -300.729, -69.7098, -283.745, -102.851, -243.781, -170.275, -191.827, -233.128, -184.834, -239.985, -135.271, -258.73, -95.2737, -281.709, -66.704, -292.699, -36.9915, -307.686, 9.86269, -318.676, 32.7184, -327.667, 60.1453, -332.663, 87.9209, -340.55, 235.788, -345.121, 393.646, -343.978, 398.641, -789.664, -825.257, -802.234, -875.798, 488.596 )
 
 [node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="StaticBody2D"]
 position = Vector2( 855.23, 370.262 )
