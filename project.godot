@@ -14,6 +14,10 @@ config/name="Coursework"
 run/main_scene="res://Scenes/Main Menu.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Globals="*res://Scenes/globals.gd"
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
