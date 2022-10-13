@@ -8,14 +8,16 @@ func _ready():
 	db = SQLite.new()
 	db.path = db_name
 	var  item_Result = getItemsByUserID(1)
+	commitDataToDB()
+	readFromDB()
 	pass
 
 func commitDataToDB():
 	db.open_db()
 	var TableName = "Player_Info"
 	var dict : Dictionary = Dictionary()
-	dict["UserName"] = "noch99"
-	dict["Time"] = 000537
+	dict["UserName"] = "Octowhat"
+	dict["Time"] = 105327
 	
 	db.insert_row(TableName,dict)
 
