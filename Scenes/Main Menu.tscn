@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/Start.gd" type="Script" id=1]
 [ext_resource path="res://Assests/Sprites/Funny titlescrren.jpg" type="Texture" id=2]
 [ext_resource path="res://Scenes/Quit.gd" type="Script" id=3]
+[ext_resource path="res://Database.tscn" type="PackedScene" id=4]
 
 [sub_resource type="InputEventAction" id=1]
 action = "ui_accept"
@@ -32,11 +33,11 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 margin_top = -23.0
-margin_right = 261.0
-margin_bottom = 22.0
+margin_right = 519.0
+margin_bottom = 51.0
 
 [node name="Start" type="Button" parent="VBoxContainer"]
-margin_right = 1025.0
+margin_right = 1283.0
 margin_bottom = 20.0
 shortcut = SubResource( 2 )
 text = "Start"
@@ -44,10 +45,19 @@ script = ExtResource( 1 )
 
 [node name="Quit" type="Button" parent="VBoxContainer"]
 margin_top = 24.0
-margin_right = 1025.0
+margin_right = 1283.0
 margin_bottom = 44.0
 text = "Quit"
 script = ExtResource( 3 )
 
+[node name="Account" type="Button" parent="VBoxContainer"]
+margin_top = 48.0
+margin_right = 1283.0
+margin_bottom = 68.0
+text = "Accounts"
+
+[node name="Database" parent="." instance=ExtResource( 4 )]
+
 [connection signal="pressed" from="VBoxContainer/Start" to="VBoxContainer/Start" method="_on_Start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="VBoxContainer/Start" method="_on_Quit_pressed"]
+[connection signal="pressed" from="VBoxContainer/Account" to="VBoxContainer/Start" method="_on_Account_pressed"]
