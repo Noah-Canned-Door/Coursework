@@ -1,9 +1,59 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Assests/Fonts/RacingSansOne-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Assests/Sprites/Funny titlescrren.jpg" type="Texture" id=2]
 [ext_resource path="res://Assests/Sprites/Button_Unpressed.png" type="Texture" id=3]
 [ext_resource path="res://Assests/Sprites/Background course.jpg" type="Texture" id=4]
 [ext_resource path="res://Assests/Sprites/Button_pressed.png" type="Texture" id=5]
+[ext_resource path="res://Scenes/Confirm.gd" type="Script" id=6]
+[ext_resource path="res://Scenes/MainSystem.gd" type="Script" id=7]
+[ext_resource path="res://Scenes/Confirmaccount.gd" type="Script" id=8]
+
+[sub_resource type="GDScript" id=5]
+script/source = "extends Node
+
+const SQLite = preload(\"res://addons/godot-sqlite/bin/gdsqlite.gdns\")
+var db
+var db_name = \"res://DataStore/database\"
+
+#func _ready():
+	#db = SQLite.new()
+	#db.path = db_name
+	#var item_Result = getItemsByUserID(1)
+	#pass
+
+func commitDataToDB():
+	db.open_db()
+	var TableName = \"Player_Info\"
+	var dict : Dictionary = Dictionary()
+	dict[\"UserName\"] = \"Octowhat\"
+	dict[\"Time\"] = 105327
+	dict[\"MapID\"] = 1
+	
+	db.insert_row(TableName,dict)
+
+func readFromDB():
+	db.open_db()
+	var TableName = \"Player_Info\"
+	db.query(\"select * from \" + TableName + \";\")
+	for i in range(0,db.query_result.size()):
+		print(\"Query results \",db.query_result[i][\"ID\"],db.query_result[i][\"UserName\"],db.query_result[i][\"Time\"] )
+
+func getItemsByUserID(id):
+	db.open_db()
+	db.query(\"SELECT * from Player_Info INNER join Map_info on Player_Info.MapID = Map_info.ID= \" + str(id))
+	for i in range(0,db.query_result.size()):
+		print(\"Query results \",db.query_result[i][\"UserName\"],db.query_result[i][\"Time\"],db.query_result[i][\"Name\"])
+	return db.query_result
+
+func removeDataFromDB():
+	db.open_db()
+	db.query(\"DELETE from Player_Info WHERE Player_Info.UserName = '\" + \"Octowhat\" + \"'\")
+	
+
+
+
+"
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
@@ -12,218 +62,237 @@ outline_color = Color( 0.313726, 0.313726, 0.313726, 1 )
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 40
+size = 20
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 40
+size = 20
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=4]
-size = 40
+size = 20
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 50
 font_data = ExtResource( 1 )
 
 [node name="Login_screen" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = SubResource( 5 )
 
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 2 )
+
+[node name="Login_screen" type="NinePatchRect" parent="." groups=["Login_Screen"]]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -300.0
-margin_top = -500.0
-margin_right = 300.0
-margin_bottom = 500.0
+margin_top = -289.0
+margin_right = 302.0
+margin_bottom = 295.0
 texture = ExtResource( 4 )
 patch_margin_left = 60
 patch_margin_top = 60
 patch_margin_right = 60
 patch_margin_bottom = 60
 
-[node name="Login_screen" type="VBoxContainer" parent="NinePatchRect"]
-visible = false
+[node name="Create_Account_box" type="VBoxContainer" parent="Login_screen"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 143.0
-margin_bottom = -143.0
+margin_left = 4.0
+margin_top = 90.0
+margin_right = -4.0
+margin_bottom = 133.0
 
-[node name="Title" type="Label" parent="NinePatchRect/Login_screen"]
-margin_right = 600.0
+[node name="Title" type="Label" parent="Login_screen/Create_Account_box"]
+margin_right = 594.0
 margin_bottom = 64.0
 custom_fonts/font = SubResource( 1 )
-text = "Login Screen"
-align = 1
-valign = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/Login_screen"]
-margin_top = 68.0
-margin_right = 600.0
-margin_bottom = 88.0
-rect_min_size = Vector2( 0, 20 )
-
-[node name="Username_title" type="Label" parent="NinePatchRect/Login_screen"]
-margin_top = 92.0
-margin_right = 600.0
-margin_bottom = 144.0
-custom_fonts/font = SubResource( 2 )
-text = "Username"
-
-[node name="Username" type="LineEdit" parent="NinePatchRect/Login_screen"]
-margin_top = 148.0
-margin_right = 600.0
-margin_bottom = 172.0
-
-[node name="Password_title" type="Label" parent="NinePatchRect/Login_screen"]
-margin_top = 176.0
-margin_right = 600.0
-margin_bottom = 228.0
-custom_fonts/font = SubResource( 3 )
-text = "Password"
-
-[node name="Password" type="LineEdit" parent="NinePatchRect/Login_screen"]
-margin_top = 232.0
-margin_right = 600.0
-margin_bottom = 256.0
-
-[node name="MarginContainer2" type="MarginContainer" parent="NinePatchRect/Login_screen"]
-margin_top = 260.0
-margin_right = 600.0
-margin_bottom = 280.0
-rect_min_size = Vector2( 0, 20 )
-
-[node name="Login_button" type="TextureButton" parent="NinePatchRect/Login_screen"]
-margin_left = 187.0
-margin_top = 284.0
-margin_right = 412.0
-margin_bottom = 509.0
-rect_min_size = Vector2( 225, 225 )
-size_flags_horizontal = 4
-texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 5 )
-expand = true
-
-[node name="Login_button" type="Label" parent="NinePatchRect/Login_screen/Login_button"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_fonts/font = SubResource( 4 )
 text = "Login"
 align = 1
 valign = 1
 
-[node name="Create_Acount" type="TextureButton" parent="NinePatchRect/Login_screen"]
-margin_left = 187.0
-margin_top = 513.0
-margin_right = 412.0
-margin_bottom = 738.0
-rect_min_size = Vector2( 225, 225 )
-size_flags_horizontal = 4
-texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 5 )
-expand = true
-
-[node name="Create_Account" type="Label" parent="NinePatchRect/Login_screen/Create_Acount"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_fonts/font = SubResource( 4 )
-text = "Create Account"
-align = 1
-valign = 1
-
-[node name="Create_Account" type="VBoxContainer" parent="NinePatchRect"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 143.0
-margin_bottom = -143.0
-
-[node name="Title" type="Label" parent="NinePatchRect/Create_Account"]
-margin_right = 600.0
-margin_bottom = 64.0
-custom_fonts/font = SubResource( 1 )
-text = "Create Account"
-align = 1
-valign = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/Create_Account"]
+[node name="Username_title" type="Label" parent="Login_screen/Create_Account_box"]
 margin_top = 68.0
-margin_right = 600.0
-margin_bottom = 88.0
-rect_min_size = Vector2( 0, 20 )
-
-[node name="Username_title" type="Label" parent="NinePatchRect/Create_Account"]
-margin_top = 92.0
-margin_right = 600.0
-margin_bottom = 144.0
+margin_right = 594.0
+margin_bottom = 94.0
 custom_fonts/font = SubResource( 2 )
 text = "Username"
 
-[node name="Username" type="LineEdit" parent="NinePatchRect/Create_Account"]
-margin_top = 148.0
-margin_right = 600.0
-margin_bottom = 172.0
+[node name="loginUsername" type="LineEdit" parent="Login_screen/Create_Account_box" groups=["Username"]]
+margin_top = 98.0
+margin_right = 594.0
+margin_bottom = 122.0
 
-[node name="Password_title" type="Label" parent="NinePatchRect/Create_Account"]
-margin_top = 176.0
-margin_right = 600.0
-margin_bottom = 228.0
+[node name="Password_title" type="Label" parent="Login_screen/Create_Account_box"]
+margin_top = 126.0
+margin_right = 594.0
+margin_bottom = 152.0
 custom_fonts/font = SubResource( 3 )
 text = "Password"
 
-[node name="Password" type="LineEdit" parent="NinePatchRect/Create_Account"]
-margin_top = 232.0
-margin_right = 600.0
-margin_bottom = 256.0
+[node name="loginPassword" type="LineEdit" parent="Login_screen/Create_Account_box" groups=["Password"]]
+margin_top = 156.0
+margin_right = 594.0
+margin_bottom = 180.0
+secret = true
+secret_character = "y"
 
-[node name="Confirm_password" type="Label" parent="NinePatchRect/Create_Account"]
-margin_top = 260.0
-margin_right = 600.0
-margin_bottom = 312.0
-custom_fonts/font = SubResource( 3 )
-text = "Confirm Password"
-
-[node name="Confirmed_password" type="LineEdit" parent="NinePatchRect/Create_Account"]
-margin_top = 316.0
-margin_right = 600.0
-margin_bottom = 340.0
-
-[node name="MarginContainer2" type="MarginContainer" parent="NinePatchRect/Create_Account"]
-margin_top = 344.0
-margin_right = 600.0
-margin_bottom = 364.0
-rect_min_size = Vector2( 0, 20 )
-
-[node name="Login_button" type="TextureButton" parent="NinePatchRect/Create_Account"]
-margin_left = 187.0
-margin_top = 368.0
-margin_right = 412.0
-margin_bottom = 593.0
-rect_min_size = Vector2( 225, 225 )
+[node name="Confirm" type="TextureButton" parent="Login_screen/Create_Account_box"]
+margin_left = 184.0
+margin_top = 184.0
+margin_right = 409.0
+margin_bottom = 284.0
+rect_min_size = Vector2( 225, 100 )
 size_flags_horizontal = 4
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 5 )
 expand = true
+script = ExtResource( 6 )
 
-[node name="Login_button" type="Label" parent="NinePatchRect/Create_Account/Login_button"]
+[node name="Confirm_button" type="Label" parent="Login_screen/Create_Account_box/Confirm"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -26.0
+margin_top = 16.0
+margin_right = 27.0
+margin_bottom = -32.0
 custom_fonts/font = SubResource( 4 )
 text = "Confirm"
 align = 1
 valign = 1
 
-[node name="Create_Acount" type="TextureButton" parent="NinePatchRect/Create_Account"]
-margin_left = 187.0
-margin_top = 597.0
-margin_right = 412.0
-margin_bottom = 822.0
-rect_min_size = Vector2( 225, 225 )
+[node name="Create_account_button" type="TextureButton" parent="Login_screen/Create_Account_box"]
+margin_left = 184.0
+margin_top = 288.0
+margin_right = 409.0
+margin_bottom = 388.0
+rect_min_size = Vector2( 225, 100 )
 size_flags_horizontal = 4
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 5 )
 expand = true
 
-[node name="Create_Account" type="Label" parent="NinePatchRect/Create_Account/Create_Acount"]
+[node name="CreateAccount_label" type="Label" parent="Login_screen/Create_Account_box/Create_account_button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 4 )
+text = "Create Account"
+align = 1
+valign = 1
+
+[node name="Create_Account_screen" type="NinePatchRect" parent="." groups=["Create_Account_Screen"]]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -300.0
+margin_top = -289.0
+margin_right = 302.0
+margin_bottom = 295.0
+texture = ExtResource( 4 )
+patch_margin_left = 60
+patch_margin_top = 60
+patch_margin_right = 60
+patch_margin_bottom = 60
+
+[node name="Create_Account_box" type="VBoxContainer" parent="Create_Account_screen"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = 54.0
+margin_right = -8.0
+margin_bottom = 93.0
+
+[node name="Title" type="Label" parent="Create_Account_screen/Create_Account_box"]
+margin_right = 592.0
+margin_bottom = 64.0
+custom_fonts/font = SubResource( 1 )
+text = "Create Account"
+align = 1
+valign = 1
+
+[node name="Username_title" type="Label" parent="Create_Account_screen/Create_Account_box"]
+margin_top = 68.0
+margin_right = 592.0
+margin_bottom = 94.0
+custom_fonts/font = SubResource( 2 )
+text = "Username"
+
+[node name="CreateUsername" type="LineEdit" parent="Create_Account_screen/Create_Account_box" groups=["CreateUsername"]]
+margin_top = 98.0
+margin_right = 592.0
+margin_bottom = 122.0
+
+[node name="Password_title" type="Label" parent="Create_Account_screen/Create_Account_box"]
+margin_top = 126.0
+margin_right = 592.0
+margin_bottom = 152.0
+custom_fonts/font = SubResource( 3 )
+text = "Password"
+
+[node name="CreatePassword" type="LineEdit" parent="Create_Account_screen/Create_Account_box" groups=["CreatePassword"]]
+margin_top = 156.0
+margin_right = 592.0
+margin_bottom = 180.0
+secret = true
+secret_character = "y"
+
+[node name="Confirm_password" type="Label" parent="Create_Account_screen/Create_Account_box"]
+margin_top = 184.0
+margin_right = 592.0
+margin_bottom = 210.0
+custom_fonts/font = SubResource( 3 )
+text = "Confirm Password"
+
+[node name="Confirmed_password" type="LineEdit" parent="Create_Account_screen/Create_Account_box" groups=["Confimedpassword"]]
+margin_top = 214.0
+margin_right = 592.0
+margin_bottom = 238.0
+
+[node name="ConfirmCreation" type="TextureButton" parent="Create_Account_screen/Create_Account_box" groups=["ConfirmLogin"]]
+margin_left = 183.0
+margin_top = 242.0
+margin_right = 408.0
+margin_bottom = 342.0
+rect_min_size = Vector2( 225, 100 )
+size_flags_horizontal = 4
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 5 )
+expand = true
+script = ExtResource( 8 )
+
+[node name="Confirm_button" type="Label" parent="Create_Account_screen/Create_Account_box/ConfirmCreation"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -26.0
+margin_top = 16.0
+margin_right = 27.0
+margin_bottom = -32.0
+custom_fonts/font = SubResource( 4 )
+text = "Confirm"
+align = 1
+valign = 1
+
+[node name="Back" type="TextureButton" parent="Create_Account_screen/Create_Account_box"]
+margin_left = 183.0
+margin_top = 346.0
+margin_right = 408.0
+margin_bottom = 446.0
+rect_min_size = Vector2( 225, 100 )
+size_flags_horizontal = 4
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 5 )
+expand = true
+
+[node name="Back" type="Label" parent="Create_Account_screen/Create_Account_box/Back"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = SubResource( 4 )
@@ -231,5 +300,37 @@ text = "Back"
 align = 1
 valign = 1
 
-[connection signal="pressed" from="NinePatchRect/Login_screen/Login_button" to="." method="_on_Login_button_pressed"]
-[connection signal="pressed" from="NinePatchRect/Create_Account/Login_button" to="." method="_on_Login_button_pressed"]
+[node name="Home" type="TextureButton" parent="."]
+margin_left = 863.0
+margin_top = 476.0
+margin_right = 1142.0
+margin_bottom = 626.0
+rect_min_size = Vector2( 250, 150 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 5 )
+expand = true
+
+[node name="Home" type="Label" parent="Home"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = -13.0
+margin_right = 4.0
+margin_bottom = -13.0
+custom_fonts/font = SubResource( 6 )
+text = "Home"
+align = 1
+valign = 1
+
+[node name="Database" type="Node" parent="." groups=["DB"]]
+script = ExtResource( 7 )
+
+[connection signal="pressed" from="Login_screen/Create_Account_box/Confirm" to="." method="_on_Login_button_pressed"]
+[connection signal="pressed" from="Login_screen/Create_Account_box/Confirm" to="Login_screen/Create_Account_box/Confirm" method="_on_Confirm_pressed"]
+[connection signal="pressed" from="Login_screen/Create_Account_box/Create_account_button" to="Login_screen/Create_Account_box/Confirm" method="_on_Create_account_button_pressed"]
+[connection signal="pressed" from="Create_Account_screen/Create_Account_box/ConfirmCreation" to="." method="_on_Login_button_pressed"]
+[connection signal="pressed" from="Create_Account_screen/Create_Account_box/ConfirmCreation" to="." method="_on_ConfirmCreation_pressed"]
+[connection signal="pressed" from="Create_Account_screen/Create_Account_box/ConfirmCreation" to="Create_Account_screen/Create_Account_box/ConfirmCreation" method="_on_Confirm_pressed"]
+[connection signal="pressed" from="Create_Account_screen/Create_Account_box/ConfirmCreation" to="Create_Account_screen/Create_Account_box/ConfirmCreation" method="_on_ConfirmCreation_pressed"]
+[connection signal="pressed" from="Create_Account_screen/Create_Account_box/Back" to="Login_screen/Create_Account_box/Confirm" method="_on_Back_pressed"]
+[connection signal="pressed" from="Home" to="Login_screen/Create_Account_box/Confirm" method="_on_Home_pressed"]
