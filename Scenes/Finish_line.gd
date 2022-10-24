@@ -21,7 +21,7 @@ func _on_Area2D_body_entered(body):
 	if !checked_Array.has(false):
 		laps += 1
 		Score_label.text = "LAPS: "+str(laps)
-	if laps == 1:
+	if laps == 0:
 		#When the lap count has been completed
 		win_screen.visible = true 
 		End_timer.text = "Time: " + timer_display.format_time()
