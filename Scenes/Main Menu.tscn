@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/Start.gd" type="Script" id=1]
 [ext_resource path="res://Assests/Sprites/Funny titlescrren.jpg" type="Texture" id=2]
 [ext_resource path="res://Scenes/Quit.gd" type="Script" id=3]
+[ext_resource path="res://Database.tscn" type="PackedScene" id=4]
 
 [sub_resource type="InputEventAction" id=1]
 action = "ui_accept"
@@ -10,7 +11,7 @@ action = "ui_accept"
 [sub_resource type="ShortCut" id=2]
 shortcut = SubResource( 1 )
 
-[node name="Main_Menu" type="Control"]
+[node name="Main Menu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -1.0
@@ -54,6 +55,8 @@ margin_top = 48.0
 margin_right = 1283.0
 margin_bottom = 68.0
 text = "Accounts"
+
+[node name="Database" parent="." instance=ExtResource( 4 )]
 
 [connection signal="pressed" from="VBoxContainer/Start" to="VBoxContainer/Start" method="_on_Start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="VBoxContainer/Start" method="_on_Quit_pressed"]
