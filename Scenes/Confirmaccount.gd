@@ -13,5 +13,9 @@ func _on_ConfirmCreation_pressed():
 		print("Enter a proper password")
 	elif Confimedpassword.get_text() != CreatePassword.get_text():
 		print("Passwords don't match")
-	elif CreateUsername.get_text() !="" and CreatePassword.get_text()!= "" and Confimedpassword.get_text() == CreatePassword.get_text():
+	elif CreateUsername.get_text() !="" and CreatePassword.get_text()!= "" and Confimedpassword.get_text() == CreatePassword.get_text() and len(Database.Userlist())==0:
 			Database.firstUserCommitDataToDB()
+	else:
+		print("Username taken")
+
+	

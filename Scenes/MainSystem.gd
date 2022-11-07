@@ -1,5 +1,9 @@
 extends Node
-onready var Login = get_tree().get_nodes_in_group("ConfirmLogin")[0]
+onready var create = get_tree().get_nodes_in_group("ConfirmCreation")[0]
+onready var Loginbutton = get_tree().get_nodes_in_group("Confirmlogin")[0]
+onready var Createusername = get_tree().get_nodes_in_group("CreateUsername")[0]
+onready var loginusername = get_tree().get_nodes_in_group("Username")[0]
+onready var loginpassword = get_tree().get_nodes_in_group("Password")[0]
 
 const SQLite = preload("res://addons/godot-sqlite/bin/gdsqlite.gdns")
 var db
@@ -8,15 +12,14 @@ var db_name = "res://DataStore/database"
 func _ready():
 	db = SQLite.new()
 	db.path = db_name
-	removeDataFromDB()
 	pass
 
 func firstUserCommitDataToDB():
 	db.open_db()
 	var TableName = "Users"
 	var dict : Dictionary = Dictionary()
-	dict["UserName"] = Login.CreateUsername.get_text()
-	dict["Passwordhash"] = hash(Login.CreatePassword.get_text())
+	dict["UserName"] = create.CreateUsername.get_text()
+	dict["Passwordhash"] = hash(create.CreatePassword.get_text())
 	db.insert_row(TableName,dict)
 
 func readFromDB():
@@ -35,5 +38,18 @@ func getItemsByUserID(id):
 
 func removeDataFromDB():
 	db.open_db()
-	db.query("DELETE from Users WHERE Users.UserName = '" + "a" + "'")
+	db.query("DELETE from Users WHERE Users.UserName = '" + "Noch99" + "'")
 	
+func Userlist():
+	db.open_db()
+	var userinput = Createusername.get_text()
+	var funny = db.select_rows("Users","Username = '" + userinput + "'", ["Username"])
+	return funny
+func UserCheck():
+	db.open_db()
+	var correctUsername = loginusername.get_text()
+	var correctPasswordhash = loginpassword.get_text()
+	var password_checker = db.select_rows("Users","Username = '" + correctUsername + "'",["Passwordhash"])
+	var player_password = password_checker[0]["Passwordhash"]
+	return player_password
+

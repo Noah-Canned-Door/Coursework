@@ -25,9 +25,13 @@ func _on_Home_pressed():
 
 
 func _on_Confirm_pressed():
-	Database.commitDataToDB()
+	print(Database.UserCheck())
 	if Username.get_text() == "":
 		print("Provide a proper username")
 	elif Password.get_text() == "":
 		print("Enter a proper password")
-	
+	elif hash(Password.get_text()) == Database.UserCheck():
+		print("Sign in complete")
+	else:
+		print("Username/password incorrect")
+
