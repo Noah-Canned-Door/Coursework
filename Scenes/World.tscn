@@ -96,3 +96,6 @@ rotation = -0.0919614
 [node name="AI" parent="." instance=ExtResource( 5 )]
 position = Vector2( 517.534, 550.822 )
 num_rays = 15
+
+[node name="AI2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 456.589, 458.256 )

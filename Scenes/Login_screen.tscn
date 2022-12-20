@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Assests/Fonts/RacingSansOne-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Assests/Sprites/Funny titlescrren.jpg" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Scenes/Confirm.gd" type="Script" id=6]
 [ext_resource path="res://Scenes/MainSystem.gd" type="Script" id=7]
 [ext_resource path="res://Scenes/Confirmaccount.gd" type="Script" id=8]
+[ext_resource path="res://Assests/Sprites/Back_button.png" type="Texture" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
@@ -25,6 +26,10 @@ font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=4]
 size = 20
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 25
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=6]
@@ -138,16 +143,52 @@ text = "Create Account"
 align = 1
 valign = 1
 
+[node name="login_Info" type="ColorRect" parent="Login_screen/Login_box"]
+margin_top = 392.0
+margin_right = 594.0
+margin_bottom = 392.0
+
+[node name="login_message_screen" type="ColorRect" parent="." groups=["Login_message_screen"]]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 212.0
+margin_top = 11.0
+margin_right = -211.0
+margin_bottom = 11.0
+
+[node name="Error_screen_back" type="Button" parent="login_message_screen"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -53.0
+margin_right = 477.0
+margin_bottom = 530.0
+rect_min_size = Vector2( 50, 50 )
+rect_scale = Vector2( 0.1, 0.1 )
+icon = ExtResource( 9 )
+
+[node name="login_message" type="Label" parent="login_message_screen" groups=["Login_message_text"]]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -153.5
+margin_right = 153.5
+margin_bottom = 64.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "Lorem ipsum"
+align = 1
+valign = 1
+autowrap = true
+
 [node name="Create_Account_screen" type="NinePatchRect" parent="." groups=["Create_Account_Screen"]]
 visible = false
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -300.0
-margin_top = -289.0
-margin_right = 302.0
-margin_bottom = 295.0
+anchor_left = 0.207
+anchor_top = 0.018
+anchor_right = 0.795
+anchor_bottom = 1.0
+margin_left = 0.0319824
+margin_top = 0.2
+margin_right = -0.0800171
+margin_bottom = -5.0
 texture = ExtResource( 4 )
 patch_margin_left = 60
 patch_margin_top = 60
@@ -251,6 +292,34 @@ text = "Back"
 align = 1
 valign = 1
 
+[node name="creation_message_screen" type="ColorRect" parent="Create_Account_screen" groups=["creation_message_screen"]]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Button" type="Button" parent="Create_Account_screen/creation_message_screen"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -53.0
+margin_right = 477.0
+margin_bottom = 530.0
+rect_min_size = Vector2( 50, 50 )
+rect_scale = Vector2( 0.1, 0.1 )
+icon = ExtResource( 9 )
+
+[node name="Creation_message" type="Label" parent="Create_Account_screen/creation_message_screen" groups=["Creation_message"]]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -153.5
+margin_right = 153.5
+margin_bottom = 64.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "Lorem ipsum"
+align = 1
+valign = 1
+autowrap = true
+
 [node name="Home" type="TextureButton" parent="."]
 margin_left = 863.0
 margin_top = 476.0
@@ -278,9 +347,12 @@ script = ExtResource( 7 )
 
 [connection signal="pressed" from="Login_screen/Login_box/Confirm" to="Login_screen/Login_box/Confirm" method="_on_Confirm_pressed"]
 [connection signal="pressed" from="Login_screen/Login_box/Create_account_button" to="Login_screen/Login_box/Confirm" method="_on_Create_account_button_pressed"]
+[connection signal="pressed" from="login_message_screen/Error_screen_back" to="Login_screen/Login_box/Confirm" method="_on_Error_screen_back_pressed"]
+[connection signal="pressed" from="login_message_screen/Error_screen_back" to="Create_Account_screen/Create_Account_box/ConfirmCreation" method="_on_Button_pressed"]
 [connection signal="pressed" from="Create_Account_screen/Create_Account_box/ConfirmCreation" to="." method="_on_ConfirmCreation_pressed"]
 [connection signal="pressed" from="Create_Account_screen/Create_Account_box/ConfirmCreation" to="." method="_on_Login_button_pressed"]
 [connection signal="pressed" from="Create_Account_screen/Create_Account_box/ConfirmCreation" to="Create_Account_screen/Create_Account_box/ConfirmCreation" method="_on_Confirm_pressed"]
 [connection signal="pressed" from="Create_Account_screen/Create_Account_box/ConfirmCreation" to="Create_Account_screen/Create_Account_box/ConfirmCreation" method="_on_ConfirmCreation_pressed"]
 [connection signal="pressed" from="Create_Account_screen/Create_Account_box/Back" to="Login_screen/Login_box/Confirm" method="_on_Back_pressed"]
+[connection signal="pressed" from="Create_Account_screen/creation_message_screen/Button" to="Create_Account_screen/Create_Account_box/ConfirmCreation" method="_on_Button_pressed"]
 [connection signal="pressed" from="Home" to="Login_screen/Login_box/Confirm" method="_on_Home_pressed"]

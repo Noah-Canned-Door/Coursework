@@ -50,6 +50,8 @@ func UserCheck():
 	var correctUsername = loginusername.get_text()
 	var correctPasswordhash = loginpassword.get_text()
 	var password_checker = db.select_rows("Users","Username = '" + correctUsername + "'",["Passwordhash"])
-	var player_password = password_checker[0]["Passwordhash"]
+	var player_password
+	if len(password_checker) > 0:
+		player_password = password_checker[0]["Passwordhash"]
 	return player_password
 
