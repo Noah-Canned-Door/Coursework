@@ -4,8 +4,8 @@ export(int) var braking = -450
 export(int) var max_speed_reverse = 250
 
 export(int) var slip_speed = 400  # Speed where traction is reduced
-export(float) var traction_fast = 0.1  # High-speed traction
-export(float) var traction_slow = 0.7  # Low-speed traction
+export(int) var traction_fast = 0.1  # High-speed traction
+export(int) var traction_slow = 0.7  # Low-speed traction
 
 export(int) var engine_power = 800
 
@@ -35,8 +35,6 @@ func get_input():
 		accel = transform.x * engine_power
 	if Input.is_action_pressed("brake"):
 		accel = transform.x * braking
-	if Input.is_action_pressed("quick_restart"):
-		get_tree().reload_current_scene()
 
 
 func calculate_steering(delta):

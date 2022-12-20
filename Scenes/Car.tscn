@@ -47,10 +47,8 @@ font_data = ExtResource( 3 )
 
 [node name="Car" type="KinematicBody2D"]
 script = ExtResource( 2 )
-max_speed_reverse = 50
 slip_speed = 50
-traction_fast = 0.5
-engine_power = 350
+engine_power = 300
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
