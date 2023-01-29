@@ -1,14 +1,12 @@
 extends "res://Scenes/BasePowerup.gd"
 
-export (int) var boost_amount = 4209
 func _init():
-	time =3
-
+	time = 3
 
 func activate_power():
-	Car.speed_boost(true,boost_amount)
+	Car.invert_controls(true)
 	Timer.start()
 
 func _on_timer_timeout():
-	Car.speed_boost(false,0)
+	Car.invert_controls(false)
 	queue_free()

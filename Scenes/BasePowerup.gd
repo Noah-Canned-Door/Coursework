@@ -12,7 +12,7 @@ func _on_body_entered(body):
 	if body.name == "Car":
 		activate_power()
 		visible = false
-		coll.disabled = true
+		coll.call_deferred("set_disabled",true)
 
 func activate_power():
 	pass
