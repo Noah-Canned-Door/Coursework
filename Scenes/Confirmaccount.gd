@@ -9,17 +9,19 @@ onready var screen_text = get_tree().get_nodes_in_group("Creation_message")[0]
 
 
 func _on_ConfirmCreation_pressed():
+	print(Database.Userlist())
+	var is_taken = (len(Database.Userlist()))
 	if CreateUsername.get_text() == "" or CreatePassword.get_text() == "":
 		message_screen.visible = true
 		screen_text.set_text("Provide a proper username/password")
 	elif Confimedpassword.get_text() != CreatePassword.get_text():
 		message_screen.visible = true
 		screen_text.set_text("Passwords do not match")
-	elif CreateUsername.get_text() !="" and CreatePassword.get_text()!= "" and Confimedpassword.get_text() == CreatePassword.get_text() and len(Database.Userlist())==0:
-			Database.firstUserCommitDataToDB()
+	elif CreateUsername.get_text() !="" and CreatePassword.get_text() != "" and CreatePassword.get_text() == Confimedpassword.get_text() and is_taken ==0:
+		Database.firstUserCommitDataToDB()
 	else:
-		screen_text.visible = true
-		screen_text.set_text("Username Taken")
+		message_screen.visible = true
+		screen_text.set_text("Username taken")
 
 
 

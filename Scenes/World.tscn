@@ -4,10 +4,14 @@
 [ext_resource path="res://Assests/Sprites/Test_track.jpg" type="Texture" id=2]
 [ext_resource path="res://Scenes/Checkpoint.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Finish_line.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/Rocket_boost.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Spikes.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/World.gd" type="Script" id=6]
-[ext_resource path="res://Scenes/Spikes.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Scenes/Ghost.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Ghost.tscn" type="PackedScene" id=7]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 482.566, 563.393, 0, 0, 0, 0, 963.133, 499.397, 0, 0, 0, 0, 1095.01, 260.555, 0, 0, 0, 0, 1038.07, -7.99949, 0, 0, 0, 0, 818.264, -139.42, 0, 0, 0, 0, 362.674, -187.417, 0, 0, 0, 0, -19.982, -147.419, 0, 0, 0, 0, -164.852, -5.71392, 0, 0, 0, 0, -213.808, 123.421, 0, 0, 0, 0, -169.847, 206.844, 0, 0, 0, 0, -129.883, 354.263, 0, 0, 0, 0, -73.9335, 461.685, 0, 0, 0, 0, 29.973, 501.682, 0, 0, 0, 0, 116.895, 545.108, 0, 0, 0, 0, 219.802, 529.109, 0, 0, 0, 0, 374.663, 555.393, 0, 0, 0, 0, 482.566, 563.393 )
+}
 
 [node name="World" type="Node2D"]
 scale = Vector2( 1.0009, 0.875056 )
@@ -29,40 +33,60 @@ __meta__ = {
 }
 
 [node name="Car" parent="." instance=ExtResource( 1 )]
-position = Vector2( 280.747, 559.964 )
+position = Vector2( 458.587, 601.104 )
 
 [node name="checkpoint" parent="." instance=ExtResource( 3 )]
+visible = false
 position = Vector2( 496.057, -164.436 )
 rotation = 1.5708
 scale = Vector2( 20, 1 )
+collision_layer = 3
+collision_mask = 3
 
 [node name="checkpoint5" parent="." instance=ExtResource( 3 )]
+visible = false
 position = Vector2( 163.335, 552.939 )
 rotation = 1.5708
 scale = Vector2( 20, 1 )
+collision_layer = 3
+collision_mask = 3
 
 [node name="checkpoint4" parent="." instance=ExtResource( 3 )]
+visible = false
 position = Vector2( 58.9382, -162.543 )
 rotation = 1.5708
 scale = Vector2( 20, 1 )
+collision_layer = 3
+collision_mask = 3
 
 [node name="checkpoint2" parent="." instance=ExtResource( 3 )]
+visible = false
 position = Vector2( -194.234, 203.744 )
 scale = Vector2( 20, 1 )
+collision_layer = 3
+collision_mask = 3
 
 [node name="checkpoint3" parent="." instance=ExtResource( 3 )]
+visible = false
 position = Vector2( 1068.04, 177.132 )
 scale = Vector2( 20, 1 )
+collision_layer = 3
+collision_mask = 3
 
 [node name="Finish_line" parent="." instance=ExtResource( 4 )]
+visible = false
 position = Vector2( 645.903, 583.981 )
 rotation = 1.5708
 scale = Vector2( 20, 1 )
+collision_layer = 3
+collision_mask = 3
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+visible = false
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
-visible = false
 position = Vector2( 876.249, 6.13829 )
 rotation = 1.57079
 polygon = PoolVector2Array( -351.26, 497.589, -347.687, 83.4232, -340.693, 35.4263, -323.709, -14.8562, -300.729, -69.7098, -283.745, -102.851, -243.781, -170.275, -191.827, -233.128, -184.834, -239.985, -135.271, -258.73, -95.2737, -281.709, -66.704, -292.699, -36.9915, -307.686, 9.86269, -318.676, 32.7184, -327.667, 60.1453, -332.663, 87.9209, -340.55, 235.788, -345.121, 393.646, -343.978, 398.641, -789.664, -825.257, -802.234, -875.798, 488.596 )
@@ -73,7 +97,6 @@ rotation = 3.14159
 polygon = PoolVector2Array( -360.675, 159.99, -347.687, 83.4232, -340.693, 35.4263, -323.709, -14.8562, -300.729, -69.7098, -283.745, -102.851, -243.781, -170.275, -191.827, -233.128, -184.834, -239.985, -147.867, -270.84, -99.9101, -299.409, -77.9299, -309.694, -33.9694, -326.836, -5.99461, -335.978, 25.9766, -340.55, 54.9505, -340.55, 87.9209, -340.55, 235.788, -345.121, 393.646, -343.978, 398.641, -789.664, -825.257, -802.234, -842.242, 205.701 )
 
 [node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="StaticBody2D"]
-visible = false
 position = Vector2( -2.9973, 1.14278 )
 polygon = PoolVector2Array( -360.675, 159.99, -347.687, 83.4232, -340.693, 35.4263, -323.709, -14.8562, -300.729, -69.7098, -283.745, -102.851, -243.781, -170.275, -191.827, -233.128, -184.834, -239.985, -147.867, -270.84, -99.9101, -299.409, -77.9299, -309.694, -33.9694, -326.836, -5.99461, -335.978, 25.9766, -340.55, 54.9505, -340.55, 87.9209, -340.55, 235.788, -345.121, 393.646, -343.978, 398.641, -789.664, -825.257, -802.234, -842.242, 205.701 )
 
@@ -85,11 +108,17 @@ polygon = PoolVector2Array( -353.851, 509.125, -347.687, 83.4232, -340.693, 35.4
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PoolVector2Array( 35.9676, 388.547, 789.29, 387.404, 846.238, 375.976, 880.208, 354.263, 891.198, 338.264, 909.182, 321.122, 927.166, 293.695, 944.15, 261.698, 957.139, 198.844, 939.155, 107.422, 921.171, 65.1387, 890.551, 25.0203, 849.236, -1.14278, 801.279, -7.99949, 768.309, -11.4278, 627.435, -13.7134, 170.846, -12.5706, 70.9362, -10.2851, 33.9694, -7.99949, 2.9973, 2.28557, -26.9757, 20.5701, -45.9586, 36.5691, -76.9308, 89.1372, -87.9209, 138.277, -96.9128, 177.132, -91.9173, 227.414, -89.9191, 258.269, -67.9389, 297.124, -26.9757, 349.692, -2.9973, 369.119 )
 
-[node name="Rocket_boost" parent="." instance=ExtResource( 5 )]
-position = Vector2( 937.157, 463.97 )
+[node name="Path2D" type="Path2D" parent="."]
+visible = false
+curve = SubResource( 1 )
 
-[node name="Spikes" parent="." instance=ExtResource( 7 )]
-position = Vector2( 351.683, -150.848 )
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+visible = false
+position = Vector2( 482.566, 563.393 )
+rotation = -0.132397
 
-[node name="Ghost" parent="Spikes" instance=ExtResource( 8 )]
-position = Vector2( 127.885, 719.954 )
+[node name="Ghost" parent="." instance=ExtResource( 7 )]
+position = Vector2( 705.365, 574.82 )
+
+[node name="Spikes" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1027.08, 423.973 )

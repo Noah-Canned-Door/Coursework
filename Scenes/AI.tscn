@@ -8,7 +8,11 @@ radius = 27.0
 height = 68.0
 
 [node name="AI" type="KinematicBody2D"]
+collision_mask = 2
 script = ExtResource( 2 )
+max_speed = 300
+look_ahead = 150
+num_rays = 15
 
 [node name="AI_Car" type="Sprite" parent="."]
 texture = ExtResource( 1 )

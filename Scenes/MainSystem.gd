@@ -12,6 +12,7 @@ var db_name = "res://DataStore/database"
 func _ready():
 	db = SQLite.new()
 	db.path = db_name
+	removeDataFromDB()
 	pass
 
 func firstUserCommitDataToDB():
@@ -24,10 +25,10 @@ func firstUserCommitDataToDB():
 
 func readFromDB():
 	db.open_db()
-	var TableName = "Player_Info"
+	var TableName = "Users"
 	db.query("select * from " + TableName + ";")
 	for i in range(0,db.query_result.size()):
-		print("Query results ",db.query_result[i]["ID"],db.query_result[i]["UserName"],db.query_result[i]["Time"] )
+		print("Query results ",db.query_result[i]["ID"],db.query_result[i]["Username"],db.query_result[i]["Passwordhash"] )
 
 func getItemsByUserID(id):
 	db.open_db()
@@ -38,7 +39,7 @@ func getItemsByUserID(id):
 
 func removeDataFromDB():
 	db.open_db()
-	db.query("DELETE from Users WHERE Users.UserName = '" + "Noch99" + "'")
+	db.query("DELETE from Users WHERE Users.UserName = '" + "d" + "'")
 	
 func Userlist():
 	db.open_db()

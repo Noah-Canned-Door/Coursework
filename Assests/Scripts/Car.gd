@@ -36,7 +36,6 @@ func get_input():
 	if Input.is_action_pressed("brake"):
 		accel = transform.x * braking
 
-
 func calculate_steering(delta):
 	var rear_wheel = position - transform.x * wheel_base / 2.0
 	var front_wheel = position + transform.x * wheel_base / 2.0
@@ -52,3 +51,11 @@ func calculate_steering(delta):
 	if d < 0:
 		velocity = -new_heading * min(velocity.length(), max_speed_reverse)
 	rotation = new_heading.angle()
+	
+
+func switch_to_collision_layer():
+	var current_layer = get_collision_layer()
+	if current_layer == 1:
+		set_collision_layer(2)
+	else:
+		set_collision_layer(1)

@@ -45,7 +45,8 @@ font_data = ExtResource( 3 )
 size = 50
 font_data = ExtResource( 3 )
 
-[node name="Car" type="KinematicBody2D"]
+[node name="Car" type="KinematicBody2D" groups=["Car"]]
+collision_mask = 2
 script = ExtResource( 2 )
 slip_speed = 50
 engine_power = 300

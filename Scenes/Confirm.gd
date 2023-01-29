@@ -25,6 +25,12 @@ func _on_Home_pressed():
 	
 
 
+func _on_Error_screen_back_pressed():
+	Error_screen.visible = false
+
+
+
+
 func _on_Confirm_pressed():
 	print(Database.UserCheck())
 	if Username.get_text() == "":	
@@ -39,8 +45,3 @@ func _on_Confirm_pressed():
 	else:
 		Error_screen.visible = true
 		Error_text.set_text("Username/Password incorrect")
-
-
-
-func _on_Error_screen_back_pressed():
-	Error_screen.visible = false

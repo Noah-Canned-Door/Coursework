@@ -149,6 +149,7 @@ margin_right = 594.0
 margin_bottom = 392.0
 
 [node name="login_message_screen" type="ColorRect" parent="." groups=["Login_message_screen"]]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 212.0
@@ -349,9 +350,6 @@ script = ExtResource( 7 )
 [connection signal="pressed" from="Login_screen/Login_box/Create_account_button" to="Login_screen/Login_box/Confirm" method="_on_Create_account_button_pressed"]
 [connection signal="pressed" from="login_message_screen/Error_screen_back" to="Login_screen/Login_box/Confirm" method="_on_Error_screen_back_pressed"]
 [connection signal="pressed" from="login_message_screen/Error_screen_back" to="Create_Account_screen/Create_Account_box/ConfirmCreation" method="_on_Button_pressed"]
-[connection signal="pressed" from="Create_Account_screen/Create_Account_box/ConfirmCreation" to="." method="_on_ConfirmCreation_pressed"]
-[connection signal="pressed" from="Create_Account_screen/Create_Account_box/ConfirmCreation" to="." method="_on_Login_button_pressed"]
-[connection signal="pressed" from="Create_Account_screen/Create_Account_box/ConfirmCreation" to="Create_Account_screen/Create_Account_box/ConfirmCreation" method="_on_Confirm_pressed"]
 [connection signal="pressed" from="Create_Account_screen/Create_Account_box/ConfirmCreation" to="Create_Account_screen/Create_Account_box/ConfirmCreation" method="_on_ConfirmCreation_pressed"]
 [connection signal="pressed" from="Create_Account_screen/Create_Account_box/Back" to="Login_screen/Login_box/Confirm" method="_on_Back_pressed"]
 [connection signal="pressed" from="Create_Account_screen/creation_message_screen/Button" to="Create_Account_screen/Create_Account_box/ConfirmCreation" method="_on_Button_pressed"]
