@@ -1,6 +1,6 @@
 extends Node2D
 
-var powerray = [load("res://Assests/Scripts/Clown.gd"), load("res://Assests/Scripts/Ghost.gd"), load("res://Assests/Scripts/Spikes.tscn"), load("res://Assests/Scripts/Rocket_boost.tscn"), load("res://Assests/Scripts/Spin.tscn")]
+var powerray = [load("res://Scenes/Clown.tscn"), load("res://Scenes/Ghost.tscn"), load("res://Scenes/Spikes.tscn"), load("res://Scenes/Rocket_boost.tscn"), load("res://Scenes/Spin.tscn")]
 var pointsdict = {}
 
 func _on_Timer_timeout():

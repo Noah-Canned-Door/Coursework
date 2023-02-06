@@ -2,13 +2,14 @@
 
 [ext_resource path="res://Assests/Scripts/Start.gd" type="Script" id=1]
 [ext_resource path="res://Assests/Sprites/Funny titlescrren.jpg" type="Texture" id=2]
-[ext_resource path="res://Assests/Scripts/Quit.gd" type="Script" id=3]
 
 [sub_resource type="InputEventAction" id=1]
 action = "ui_accept"
 
 [sub_resource type="ShortCut" id=2]
 shortcut = SubResource( 1 )
+
+[sub_resource type="GDScript" id=3]
 
 [node name="Main_Menu" type="Control"]
 anchor_right = 1.0
@@ -47,7 +48,7 @@ margin_top = 24.0
 margin_right = 1283.0
 margin_bottom = 44.0
 text = "Quit"
-script = ExtResource( 3 )
+script = SubResource( 3 )
 
 [node name="Account" type="Button" parent="VBoxContainer"]
 margin_top = 48.0
