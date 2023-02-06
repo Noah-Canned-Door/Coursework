@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assests/Scripts/Start.gd" type="Script" id=1]
 [ext_resource path="res://Assests/Sprites/Funny titlescrren.jpg" type="Texture" id=2]
+[ext_resource path="res://Assests/Audio/title_screen_music.mp3" type="AudioStream" id=3]
 
 [sub_resource type="InputEventAction" id=1]
 action = "ui_accept"
@@ -55,6 +56,12 @@ margin_top = 48.0
 margin_right = 1283.0
 margin_bottom = 68.0
 text = "Accounts"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = 5.607
+pitch_scale = 0.64
+autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/Start" to="VBoxContainer/Start" method="_on_Start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="VBoxContainer/Start" method="_on_Quit_pressed"]
