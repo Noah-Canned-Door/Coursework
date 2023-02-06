@@ -1,4 +1,4 @@
-extends "res://Scenes/BasePowerup.gd"
+extends "res://Assests/Scripts/BasePowerup.gd"
 
 export (int) var boost_amount = 4209
 func _init():

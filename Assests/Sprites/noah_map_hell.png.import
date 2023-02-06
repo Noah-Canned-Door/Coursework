@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Noah Clown.png-c05c149c3ff0b8f32326296de38725dd.stex"
+path="res://.import/noah_map_hell.png-8cde423ab5ca5a2872953755c91ede25.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Noah Clown.png"
-dest_files=[ "res://.import/Noah Clown.png-c05c149c3ff0b8f32326296de38725dd.stex" ]
+source_file="res://Assests/Sprites/noah_map_hell.png"
+dest_files=[ "res://.import/noah_map_hell.png-8cde423ab5ca5a2872953755c91ede25.stex" ]
 
 [params]
 

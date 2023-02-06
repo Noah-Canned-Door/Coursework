@@ -1,20 +1,38 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/Car.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assests/Sprites/Test_track.jpg" type="Texture" id=2]
 [ext_resource path="res://Scenes/Checkpoint.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Finish_line.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/Clown.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/World.gd" type="Script" id=6]
+[ext_resource path="res://Scenes/Ghost.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assests/Scripts/World.gd" type="Script" id=6]
+[ext_resource path="res://Scenes/Powerup_Spawner.tscn" type="PackedScene" id=7]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 482.566, 563.393, 0, 0, 0, 0, 963.133, 499.397, 0, 0, 0, 0, 1095.01, 260.555, 0, 0, 0, 0, 1038.07, -7.99949, 0, 0, 0, 0, 818.264, -139.42, 0, 0, 0, 0, 362.674, -187.417, 0, 0, 0, 0, -19.982, -147.419, 0, 0, 0, 0, -164.852, -5.71392, 0, 0, 0, 0, -213.808, 123.421, 0, 0, 0, 0, -169.847, 206.844, 0, 0, 0, 0, -129.883, 354.263, 0, 0, 0, 0, -73.9335, 461.685, 0, 0, 0, 0, 29.973, 501.682, 0, 0, 0, 0, 116.895, 545.108, 0, 0, 0, 0, 219.802, 529.109, 0, 0, 0, 0, 374.663, 555.393, 0, 0, 0, 0, 482.566, 563.393 )
 }
 
-[node name="World" type="Node2D"]
+[node name="world_1" type="Node2D"]
 scale = Vector2( 1.0009, 0.875056 )
 script = ExtResource( 6 )
+
+[node name="Powerup_Spawner" parent="." instance=ExtResource( 7 )]
+
+[node name="Position2D" type="Position2D" parent="Powerup_Spawner" groups=["spawnpoints"]]
+position = Vector2( 978.12, 458.256 )
+
+[node name="Position2D2" type="Position2D" parent="Powerup_Spawner" groups=["spawnpoints"]]
+position = Vector2( 1023.08, -17.1418 )
+
+[node name="Position2D3" type="Position2D" parent="Powerup_Spawner" groups=["spawnpoints"]]
+position = Vector2( 326.706, -154.276 )
+
+[node name="Position2D4" type="Position2D" parent="Powerup_Spawner" groups=["spawnpoints"]]
+position = Vector2( -278.749, 242.27 )
+
+[node name="Position2D5" type="Position2D" parent="Powerup_Spawner" groups=["spawnpoints"]]
+position = Vector2( 180.837, 574.82 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchor_right = 1.0
@@ -116,5 +134,8 @@ visible = false
 position = Vector2( 482.566, 563.393 )
 rotation = -0.132397
 
-[node name="Clown" parent="." instance=ExtResource( 5 )]
-position = Vector2( 790.289, 555.393 )
+[node name="Ghost" parent="." instance=ExtResource( 5 )]
+position = Vector2( 672.395, 553.107 )
+
+[node name="Ghost2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 841.243, 545.108 )

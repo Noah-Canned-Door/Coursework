@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Scenes/Start.gd" type="Script" id=1]
+[ext_resource path="res://Assests/Scripts/Start.gd" type="Script" id=1]
 [ext_resource path="res://Assests/Sprites/Funny titlescrren.jpg" type="Texture" id=2]
-[ext_resource path="res://Scenes/Quit.gd" type="Script" id=3]
+[ext_resource path="res://Assests/Scripts/Quit.gd" type="Script" id=3]
 
 [sub_resource type="InputEventAction" id=1]
 action = "ui_accept"

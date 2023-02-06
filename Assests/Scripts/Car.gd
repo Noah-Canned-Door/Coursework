@@ -18,9 +18,12 @@ export(int) var steering_angle = 15
 var velocity = Vector2.ZERO
 var steer_angle
 
+export(int) var cam_zoom = 1
 
 var invert = 1
 
+func _ready():
+	$Camera2D.zoom = Vector2(cam_zoom, cam_zoom)
 
 func _physics_process(delta):
 	accel = Vector2.ZERO
@@ -58,12 +61,14 @@ func calculate_steering(delta):
 	rotation = new_heading.angle()
 	
 
-func switch_to_collision_layer():
+func switch_to_collision_layer(b):
 	var current_layer = get_collision_layer()
-	if current_layer == 1:
-		set_collision_layer(2)
+	if b:
+		set_collision_layer_bit(2,true)
+		set_collision_layer_bit(1, false)
 	else:
-		set_collision_layer(1)
+		set_collision_layer_bit(1,true)
+		set_collision_layer_bit(2, false)
 
 func speed_boost(b,boost_amount):
 	if b:
@@ -76,3 +81,6 @@ func invert_controls(b):
 		invert = -1
 	else:
 		invert = 1
+
+
+

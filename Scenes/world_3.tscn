@@ -1,0 +1,130 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scenes/Car.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assests/Sprites/ranbooroads.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Teleporter.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Finish_line.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Checkpoint.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assests/Audio/Y2Mate.is - Rainbow Road-FuX5_OWObA0-128k-1659383789505.mp3" type="AudioStream" id=6]
+
+[node name="world_3" type="Node2D" groups=["World_3"]]
+position = Vector2( -3687, 0 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 8096.0
+margin_bottom = 4096.0
+texture = ExtResource( 2 )
+expand = true
+
+[node name="Car" parent="." instance=ExtResource( 1 )]
+position = Vector2( 4609, 2554 )
+cam_zoom = 2
+
+[node name="Teleporter" parent="." groups=["Teleporter"] instance=ExtResource( 3 )]
+pos = Vector2( 1206, 2439 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Teleporter"]
+polygon = PoolVector2Array( 2147, 1293, 2582, 1024, 2730, 947, 3250, 783, 2840, 609, 1906, 1037, 795, 2176, 1473, 1738, 1810, 1518 )
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="Teleporter"]
+polygon = PoolVector2Array( 3894, 3083, 3325, 3516, 3184, 3617, 2937, 3637, 2700, 3678, 2463, 3693, 1878, 3496, 1541, 3340, 1268, 3043, 906, 2428, 901, 2090, 462, 3335, 1636, 3995, 3572, 3819 )
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Teleporter"]
+polygon = PoolVector2Array( 6600, 2453, 5776, 2761, 5220, 2918, 4621, 2925, 4130, 2982, 3980, 3025, 3795, 3175, 6068, 3203 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Teleporter"]
+polygon = PoolVector2Array( 3032, 846, 4736, 367, 6403, 459, 4707, 17 )
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Teleporter"]
+polygon = PoolVector2Array( 6347, 469, 6802, 709, 6945, 865, 7038, 987, 7059, 1165, 7045, 1329, 7030, 1528, 6966, 1635, 6909, 1828, 6824, 2041, 6674, 2312, 6480, 2529, 7879, 2312, 7636, 580 )
+
+[node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="Teleporter"]
+polygon = PoolVector2Array( 3902, 2024, 4669, 2044, 4897, 2038, 5025, 2011, 5220, 1930, 5435, 1856, 6001, 1654, 5980, 1574, 5543, 1237, 4453, 1183, 4285, 1163, 4144, 1204, 3659, 1345, 2960, 1560, 1951, 2219, 2287, 2724, 2805, 2912, 3619, 2280 )
+
+[node name="debug_pos" type="Position2D" parent="."]
+visible = false
+position = Vector2( 4893, 2439 )
+
+[node name="cheGpoints" type="Node2D" parent="."]
+
+[node name="checkpoint" parent="cheGpoints" instance=ExtResource( 5 )]
+position = Vector2( 5744, 2275 )
+rotation = 1.11352
+scale = Vector2( 50, 1 )
+collision_layer = 3
+collision_mask = 3
+
+[node name="checkpoint2" parent="cheGpoints" instance=ExtResource( 5 )]
+position = Vector2( 6524, 1569 )
+rotation = 0.010472
+scale = Vector2( 50, 1 )
+collision_layer = 3
+collision_mask = 3
+
+[node name="checkpoint3" parent="cheGpoints" instance=ExtResource( 5 )]
+position = Vector2( 5831, 869 )
+rotation = 2.01236
+scale = Vector2( 47, 1 )
+collision_layer = 3
+collision_mask = 3
+
+[node name="checkpoint4" parent="cheGpoints" instance=ExtResource( 5 )]
+position = Vector2( 4930, 795 )
+rotation = 1.73311
+scale = Vector2( 40, 1 )
+collision_layer = 3
+collision_mask = 3
+
+[node name="checkpoint5" parent="cheGpoints" instance=ExtResource( 5 )]
+position = Vector2( 3511, 1051 )
+rotation = 1.73311
+scale = Vector2( 40, 1 )
+collision_layer = 3
+collision_mask = 3
+
+[node name="checkpoint6" parent="cheGpoints" instance=ExtResource( 5 )]
+position = Vector2( 2549, 1435 )
+rotation = 0.984366
+scale = Vector2( 35, 1 )
+collision_layer = 3
+collision_mask = 3
+
+[node name="checkpoint7" parent="cheGpoints" instance=ExtResource( 5 )]
+position = Vector2( 1762, 1960 )
+rotation = 0.984366
+scale = Vector2( 35, 1 )
+collision_layer = 3
+collision_mask = 3
+
+[node name="checkpoint8" parent="cheGpoints" instance=ExtResource( 5 )]
+position = Vector2( 1688, 2740 )
+rotation = 2.47837
+scale = Vector2( 50, 1 )
+collision_layer = 3
+collision_mask = 3
+
+[node name="checkpoint9" parent="cheGpoints" instance=ExtResource( 5 )]
+position = Vector2( 3168, 3218 )
+rotation = 1.10479
+scale = Vector2( 45, 1 )
+collision_layer = 3
+collision_mask = 3
+
+[node name="checkpoint10" parent="cheGpoints" instance=ExtResource( 5 )]
+position = Vector2( 4604, 2468 )
+rotation = 1.27235
+scale = Vector2( 45, 1 )
+collision_layer = 3
+collision_mask = 3
+
+[node name="Finish_line" parent="cheGpoints" instance=ExtResource( 4 )]
+position = Vector2( 4995, 2427 )
+rotation = 1.25315
+scale = Vector2( 50, 1 )
+collision_layer = 3
+collision_mask = 3
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = 2.587
+autoplay = true

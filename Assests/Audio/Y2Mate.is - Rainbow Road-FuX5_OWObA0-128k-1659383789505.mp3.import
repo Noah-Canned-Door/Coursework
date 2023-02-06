@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Y2Mate.is - Rainbow Road-FuX5_OWObA0-128k-1659383789505.mp3-d633f30fd16529563b3ef3b7fc9dc949.mp3str"
+
+[deps]
+
+source_file="res://Assests/Audio/Y2Mate.is - Rainbow Road-FuX5_OWObA0-128k-1659383789505.mp3"
+dest_files=[ "res://.import/Y2Mate.is - Rainbow Road-FuX5_OWObA0-128k-1659383789505.mp3-d633f30fd16529563b3ef3b7fc9dc949.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
