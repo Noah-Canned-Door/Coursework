@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Car.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assests/Sprites/ranbooroads.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Scenes/Finish_line.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Checkpoint.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assests/Audio/Y2Mate.is - Rainbow Road-FuX5_OWObA0-128k-1659383789505.mp3" type="AudioStream" id=6]
+[ext_resource path="res://Scenes/Powerup_Spawner.tscn" type="PackedScene" id=7]
 
 [node name="world_3" type="Node2D" groups=["World_3"]]
 position = Vector2( -3687, 0 )
@@ -17,7 +18,7 @@ texture = ExtResource( 2 )
 expand = true
 
 [node name="Car" parent="." instance=ExtResource( 1 )]
-position = Vector2( 4609, 2554 )
+position = Vector2( 4739, 2513 )
 cam_zoom = 2
 
 [node name="Teleporter" parent="." groups=["Teleporter"] instance=ExtResource( 3 )]
@@ -123,6 +124,38 @@ rotation = 1.25315
 scale = Vector2( 50, 1 )
 collision_layer = 3
 collision_mask = 3
+
+[node name="Powerups" type="Node2D" parent="."]
+
+[node name="Powerup_Spawner" parent="Powerups" instance=ExtResource( 7 )]
+position = Vector2( 5366, 2397 )
+
+[node name="Powerup_Spawner2" parent="Powerups" instance=ExtResource( 7 )]
+position = Vector2( 6270, 2083 )
+
+[node name="Powerup_Spawner3" parent="Powerups" instance=ExtResource( 7 )]
+position = Vector2( 6384, 989 )
+
+[node name="Powerup_Spawner4" parent="Powerups" instance=ExtResource( 7 )]
+position = Vector2( 5261, 818 )
+
+[node name="Powerup_Spawner5" parent="Powerups" instance=ExtResource( 7 )]
+position = Vector2( 4138, 894 )
+
+[node name="Powerup_Spawner6" parent="Powerups" instance=ExtResource( 7 )]
+position = Vector2( 2949, 1322 )
+
+[node name="Powerup_Spawner7" parent="Powerups" instance=ExtResource( 7 )]
+position = Vector2( 2074, 1750 )
+
+[node name="Powerup_Spawner8" parent="Powerups" instance=ExtResource( 7 )]
+position = Vector2( 1370, 2416 )
+
+[node name="Powerup_Spawner9" parent="Powerups" instance=ExtResource( 7 )]
+position = Vector2( 2122, 3168 )
+
+[node name="Powerup_Spawner10" parent="Powerups" instance=ExtResource( 7 )]
+position = Vector2( 3739, 2768 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
