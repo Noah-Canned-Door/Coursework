@@ -17,6 +17,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Globals="*res://Assests/Scripts/globals.gd"
+GlobalUsername="*res://Scenes/Global_username.tscn"
 
 [gui]
 

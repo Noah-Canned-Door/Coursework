@@ -28,13 +28,10 @@ func _on_Area2D_body_entered(body):
 	for x in get_tree().get_nodes_in_group("Checkpoints"):
 		checked_Array.append(x.checked)
 		x.checked = false
-	if Teleport.fallen_off:
-		Teleport.fallen_off = false
-	if !checked_Array.has(false) and not Teleport.fallen_off:
+	if !checked_Array.has(false) :
 		laps += 1
-		Teleport.fallen_off = false
 		Score_label.text = "LAPS: "+str(laps)
-	if (Teleport and not Teleport.fallen_off and laps == 6) or (not Teleport and laps == 6):
+	if laps == 1:
 		#When the lap count has been completed
 		win_screen.visible = true 
 		End_timer.text = "Time: " + timer_display.format_time()

@@ -55,4 +55,6 @@ func UserCheck():
 	if len(password_checker) > 0:
 		player_password = password_checker[0]["Passwordhash"]
 	return player_password
-
+func Time_add():
+	db.open_db()
+	var time
