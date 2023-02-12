@@ -18,6 +18,7 @@ config/icon="res://icon.png"
 
 Globals="*res://Assests/Scripts/globals.gd"
 GlobalUsername="*res://Scenes/Global_username.tscn"
+GlobalLoginState="*res://Scenes/Global_login_state.tscn"
 
 [gui]
 

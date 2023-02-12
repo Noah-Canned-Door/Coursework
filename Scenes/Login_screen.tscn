@@ -36,7 +36,7 @@ font_data = ExtResource( 1 )
 size = 50
 font_data = ExtResource( 1 )
 
-[node name="Login_screen" type="Control"]
+[node name="Login_screen" type="Control" groups=["login_screen"]]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -309,6 +309,74 @@ rect_scale = Vector2( 0.1, 0.1 )
 icon = ExtResource( 9 )
 
 [node name="Creation_message" type="Label" parent="Create_Account_screen/creation_message_screen" groups=["Creation_message"]]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -153.5
+margin_right = 153.5
+margin_bottom = 64.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "Lorem ipsum"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Best_times" type="NinePatchRect" parent="." groups=["Create_Account_Screen"]]
+visible = false
+anchor_left = 0.207
+anchor_top = 0.018
+anchor_right = 0.795
+anchor_bottom = 1.0
+margin_left = 0.0319824
+margin_top = 0.2
+margin_right = -0.0800171
+margin_bottom = -5.0
+texture = ExtResource( 4 )
+patch_margin_left = 60
+patch_margin_top = 60
+patch_margin_right = 60
+patch_margin_bottom = 60
+
+[node name="Create_Account_box" type="VBoxContainer" parent="Best_times"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = 54.0
+margin_right = -8.0
+margin_bottom = 93.0
+
+[node name="Title" type="Label" parent="Best_times/Create_Account_box"]
+margin_right = 592.0
+margin_bottom = 64.0
+custom_fonts/font = SubResource( 1 )
+text = "Place holder"
+align = 1
+valign = 1
+
+[node name="Label" type="Label" parent="Best_times/Create_Account_box"]
+margin_top = 68.0
+margin_right = 592.0
+margin_bottom = 82.0
+align = 1
+valign = 1
+autowrap = true
+
+[node name="creation_message_screen" type="ColorRect" parent="Best_times" groups=["creation_message_screen"]]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Button" type="Button" parent="Best_times/creation_message_screen"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -53.0
+margin_right = 477.0
+margin_bottom = 530.0
+rect_min_size = Vector2( 50, 50 )
+rect_scale = Vector2( 0.1, 0.1 )
+icon = ExtResource( 9 )
+
+[node name="Creation_message" type="Label" parent="Best_times/creation_message_screen" groups=["Creation_message"]]
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -153.5

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/Global_login_state.gd" type="Script" id=1]
+
+[node name="Global_login_state" type="Node"]
+script = ExtResource( 1 )

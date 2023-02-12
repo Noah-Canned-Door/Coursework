@@ -6,8 +6,8 @@ onready var Password = get_tree().get_nodes_in_group("Password")[0]
 onready var Database = get_tree().get_nodes_in_group("DB")[0]
 onready var Error_screen = get_tree().get_nodes_in_group("Login_message_screen")[0]
 onready var Error_text = get_tree().get_nodes_in_group("Login_message_text")[0]
-onready var global_username = get_node("res://Global_username.gd")
-var login_state = false
+onready var global_username = get_node("/root/GlobalUsername")
+onready var global_login_state = get_node("/root/GlobalLoginState")
 
 
 func _on_Create_account_button_pressed():
@@ -44,10 +44,10 @@ func _on_Confirm_pressed():
 		Error_text.set_text("Provide a proper username/password")
 	elif hash(Password.get_text()) == Database.UserCheck():
 		Error_screen.visible = true
-		Error_text.set_text("Login Complete\nWelcome " + Username.get_text())
 		global_username.Current_user.append(Username.get_text())
-		print(global_username.current_user)
-		login_state = true
+		Error_text.set_text("Login Complete\nWelcome " + global_username.Current_user[0])
+		global_login_state.login_state.append("1")
 	else:
 		Error_screen.visible = true
 		Error_text.set_text("Username/Password incorrect")
+
