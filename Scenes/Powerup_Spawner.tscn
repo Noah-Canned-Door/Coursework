@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Assests/Scripts/Powerup_Spawner.gd" type="Script" id=1]
 
-[node name="Powerup_Spawner" type="Node2D"]
+[node name="Powerup_Spawner" type="Node2D" groups=["spawnpoints"]]
 script = ExtResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]
