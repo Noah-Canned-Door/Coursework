@@ -19,6 +19,8 @@ config/icon="res://icon.png"
 Globals="*res://Assests/Scripts/globals.gd"
 GlobalUsername="*res://Scenes/Global_username.tscn"
 GlobalLoginState="*res://Scenes/Global_login_state.tscn"
+RaceTime="*res://Scenes/Race_time.tscn"
+MapId="*res://Scenes/map_ID.tscn"
 
 [gui]
 

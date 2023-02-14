@@ -1,12 +1,11 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Assests/Fonts/RacingSansOne-Regular.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://Assests/Sprites/Funny titlescrren.jpg" type="Texture" id=2]
+[ext_resource path="res://Scenes/Database.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assests/Sprites/Button_Unpressed.png" type="Texture" id=3]
 [ext_resource path="res://Assests/Sprites/Background course.jpg" type="Texture" id=4]
 [ext_resource path="res://Assests/Sprites/Button_pressed.png" type="Texture" id=5]
 [ext_resource path="res://Assests/Scripts/Confirm.gd" type="Script" id=6]
-[ext_resource path="res://Assests/Scripts/MainSystem.gd" type="Script" id=7]
 [ext_resource path="res://Assests/Scripts/Confirmaccount.gd" type="Script" id=8]
 [ext_resource path="res://Assests/Sprites/Back_button.png" type="Texture" id=9]
 
@@ -40,12 +39,7 @@ font_data = ExtResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="TextureRect" type="TextureRect" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
-texture = ExtResource( 2 )
-
-[node name="Login_screen" type="NinePatchRect" parent="." groups=["Login_Screen"]]
+[node name="Login_screen" type="NinePatchRect" parent="." groups=["Login_screen"]]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -411,8 +405,7 @@ text = "Home"
 align = 1
 valign = 1
 
-[node name="Database" type="Node" parent="." groups=["DB"]]
-script = ExtResource( 7 )
+[node name="Database" parent="." instance=ExtResource( 2 )]
 
 [connection signal="pressed" from="Login_screen/Login_box/Confirm" to="Login_screen/Login_box/Confirm" method="_on_Confirm_pressed"]
 [connection signal="pressed" from="Login_screen/Login_box/Create_account_button" to="Login_screen/Login_box/Confirm" method="_on_Create_account_button_pressed"]

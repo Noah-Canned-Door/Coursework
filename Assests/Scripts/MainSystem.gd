@@ -1,9 +1,12 @@
 extends Node
-onready var create = get_tree().get_nodes_in_group("ConfirmCreation")[0]
-onready var Loginbutton = get_tree().get_nodes_in_group("Confirmlogin")[0]
-onready var Createusername = get_tree().get_nodes_in_group("CreateUsername")[0]
-onready var loginusername = get_tree().get_nodes_in_group("Username")[0]
-onready var loginpassword = get_tree().get_nodes_in_group("Password")[0]
+onready var create = get_tree().get_nodes_in_group("ConfirmCreation")
+onready var Loginbutton = get_tree().get_nodes_in_group("Confirmlogin")
+onready var Createusername = get_tree().get_nodes_in_group("CreateUsername")
+onready var loginusername = get_tree().get_nodes_in_group("Username")
+onready var loginpassword = get_tree().get_nodes_in_group("Password")
+onready var race_time = get_node("/root/RaceTime")
+onready var map_id = get_node("/root/MapId")
+onready var global_username = get_node("/root/GlobalUsername")
 
 const SQLite = preload("res://addons/godot-sqlite/bin/gdsqlite.gdns")
 var db
@@ -13,7 +16,18 @@ func _ready():
 	db = SQLite.new()
 	db.path = db_name
 	removeDataFromDB()
-	pass
+	
+	
+	if len(create) != 0:
+		create = create[0]
+	if len(Loginbutton) != 0:
+		Loginbutton = Loginbutton[0]
+	if len(Createusername) != 0:
+		Createusername = Createusername[0]
+	if len(loginusername) != 0:
+		loginusername = loginusername[0]
+	if len(loginpassword) != 0:
+		loginpassword = loginpassword[0]
 
 func firstUserCommitDataToDB():
 	db.open_db()
@@ -55,6 +69,12 @@ func UserCheck():
 	if len(password_checker) > 0:
 		player_password = password_checker[0]["Passwordhash"]
 	return player_password
+
 func Time_add():
 	db.open_db()
-	var time
+	var TableName = "Player_Info"
+	var dict : Dictionary = Dictionary()
+	dict["UserName"] = global_username.Current_user[0]
+	dict["Time"] = race_time.time_arr[0]
+	dict["MapID"] = map_id.map_id[0]
+	db.insert_row(TableName,dict)
